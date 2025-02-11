@@ -13,5 +13,5 @@ I, admittedly, overengineered this task to showcase that I can apply OOP concept
 
 ---
 
-[!UML Diagram2](https://raw.githubusercontent.com/LastGenomeBender/InputOutputTask/bebadbb98384aa11cbf187183c29ee0b092606c1/src/IOTaskUmlDiagram.svg?token=AJU4SXKXURDF4SJYGXH5BXDHVMVE4)
+![UML Diagram2](https://raw.githubusercontent.com/LastGenomeBender/InputOutputTask/c6317ffcccfdb3ad0c6fac9a1ea8bac4d4205524/src/IOTaskUmlDiagram.svg)
 
