@@ -1,0 +1,158 @@
+@startuml
+class lesson_tasks.input_output_task_refactor.ReadFileClass {
+- String directoryPath
+- String fileName
+- String thingThatWasRead
++ <<Create>> ReadFileClass(String)
++ String getThingThatWasRead()
++ void IOfunction()
+}
+
+
+class lesson_tasks.input_output_task_refactor.WriteFileClass {
+- String directoryPath
+- String fileName
+- String thingToWrite
++ <<Create>> WriteFileClass(String,String)
++ FileWriter getFile()
++ void IOfunction()
+}
+
+
+interface lesson_tasks.input_output_task_refactor.TaskMath {
+- {static} int[] fillRandomArr(int[],int,int)
++ {static} int[] generateRandom(int,int)
+- {static} boolean ifOdd(int)
+- {static} boolean ifEven(int)
++ {static} int[] returnOddArr(int[])
++ {static} int[] returnEvenArr(int[])
+}
+
+interface lesson_tasks.input_output_task_refactor.Streamable {
+~ void IOfunction()
++ {static} void checkIfSaneFolder()
+}
+
+enum lesson_tasks.input_output_task_refactor.DirectoryPath {
++  WORKING_DIR
+- {static} String directoryPath
+- {static} File outputDirectory
++ void setDirectoryPath(String)
++ File getOutputDirectory()
++ String getDirectoryPath()
+}
+
+
+class lesson_tasks.input_output_task_refactor.NonIntegerInputException {
+~ <<Create>> NonIntegerInputException(String)
+}
+
+class lesson_tasks.input_output_task_refactor.InvalidIntegerInputSpaceException {
+~ <<Create>> InvalidIntegerInputSpaceException(String,int,int)
+}
+
+class lesson_tasks.input_output_task_refactor.CustomIOException {
+~ <<Create>> CustomIOException(String)
+}
+
+class lesson_tasks.input_output_task_refactor.NonCreatableDirectoryException {
+~ <<Create>> NonCreatableDirectoryException(File)
+}
+
+class lesson_tasks.input_output_task_refactor.NonReadableDirectoryException {
+~ <<Create>> NonReadableDirectoryException(File)
+}
+
+class lesson_tasks.input_output_task_refactor.NotADirectoryException {
+~ <<Create>> NotADirectoryException(File)
+}
+
+class lesson_tasks.input_output_task_refactor.NonWritableDirectoryException {
+~ <<Create>> NonWritableDirectoryException(File)
+}
+
+class lesson_tasks.input_output_task_refactor.NonExistentFileReadException {
+~ <<Create>> NonExistentFileReadException(File)
+}
+
+class lesson_tasks.input_output_task_refactor.NotAFileExcepion {
+~ <<Create>> NotAFileExcepion(File)
+}
+
+class lesson_tasks.input_output_task_refactor.NonReadableFileException {
+~ <<Create>> NonReadableFileException(File)
+}
+
+class lesson_tasks.input_output_task_refactor.NonCreatableFileException {
+~ <<Create>> NonCreatableFileException(File)
+}
+
+class lesson_tasks.input_output_task_refactor.NonWritableFileException {
+~ <<Create>> NonWritableFileException(File)
+}
+
+class lesson_tasks.input_output_task_refactor.Main {
++ {static} void main(String[])
++ {static} int scanRandomRange(Scanner)
++ {static} int scanRandomLength(Scanner)
++ {static} void scanWorkingDirectoryName(Scanner)
++ {static} ReadFileClass scanInFileName(String)
++ {static} WriteFileClass scanOutFileName(Scanner,String)
+~ {static} int randomSanityCheckLength(String)
+~ {static} int randomSanityCheckRange(String)
+~ {static} int[] castToIntArr(ReadFileClass)
+}
+
+interface lesson_tasks.input_output_task_refactor.Writable {
++ {static} void checkIfSaneOutputFile()
+}
+
+enum lesson_tasks.input_output_task_refactor.WriteFile {
++  WRITE_FILE
+- {static} String fileName
+- {static} String outputFilePath
+- {static} FileWriter fileWriter
+- {static} File outputFile
++ void setFileName(String)
++ String getFileName()
++ String getOutputFilePath()
++ FileWriter getOutputFileWriter()
++ File getOutputFile()
+}
+
+
+interface lesson_tasks.input_output_task_refactor.Readable {
++ {static} void checkIfSaneInputFile()
+}
+
+enum lesson_tasks.input_output_task_refactor.ReadFile {
++  READ_FILE
+- {static} String fileName
+- {static} String inputFilePath
+- {static} File inputFile
++ void setFileName(String)
++ String getFileName()
++ String getInputFilePath()
++ File getInputFile()
+}
+
+
+
+
+lesson_tasks.input_output_task_refactor.Readable <|.. lesson_tasks.input_output_task_refactor.ReadFileClass
+lesson_tasks.input_output_task_refactor.Writable <|.. lesson_tasks.input_output_task_refactor.WriteFileClass
+lesson_tasks.input_output_task_refactor.IllegalArgumentException <|-- lesson_tasks.input_output_task_refactor.NonIntegerInputException
+lesson_tasks.input_output_task_refactor.IllegalArgumentException <|-- lesson_tasks.input_output_task_refactor.InvalidIntegerInputSpaceException
+java.io.IOException <|-- lesson_tasks.input_output_task_refactor.CustomIOException
+lesson_tasks.input_output_task_refactor.CustomIOException <|-- lesson_tasks.input_output_task_refactor.NonCreatableDirectoryException
+lesson_tasks.input_output_task_refactor.CustomIOException <|-- lesson_tasks.input_output_task_refactor.NonReadableDirectoryException
+lesson_tasks.input_output_task_refactor.CustomIOException <|-- lesson_tasks.input_output_task_refactor.NotADirectoryException
+lesson_tasks.input_output_task_refactor.CustomIOException <|-- lesson_tasks.input_output_task_refactor.NonWritableDirectoryException
+lesson_tasks.input_output_task_refactor.CustomIOException <|-- lesson_tasks.input_output_task_refactor.NonExistentFileReadException
+lesson_tasks.input_output_task_refactor.CustomIOException <|-- lesson_tasks.input_output_task_refactor.NotAFileExcepion
+lesson_tasks.input_output_task_refactor.CustomIOException <|-- lesson_tasks.input_output_task_refactor.NonReadableFileException
+lesson_tasks.input_output_task_refactor.CustomIOException <|-- lesson_tasks.input_output_task_refactor.NonCreatableFileException
+lesson_tasks.input_output_task_refactor.CustomIOException <|-- lesson_tasks.input_output_task_refactor.NonWritableFileException
+lesson_tasks.input_output_task_refactor.Streamable <|-- lesson_tasks.input_output_task_refactor.Writable
+lesson_tasks.input_output_task_refactor.Streamable <|-- lesson_tasks.input_output_task_refactor.Readable
+@enduml
