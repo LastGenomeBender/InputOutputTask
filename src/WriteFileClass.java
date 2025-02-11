@@ -1,4 +1,4 @@
-package lesson_tasks.input_output_task_refactor;
+
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
